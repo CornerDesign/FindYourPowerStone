@@ -1,1 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>deviceorientation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1">
+    <script src = "https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="build/three.js"></script>
+</head>
+<style>
+    body {
+        margin: 0px;
+        background-color: #000000;
+        overflow: hidden;
+    }
+    #container{
+        margin: 0px;
+        overflow:hidden;
+    }
+    #Background {
+        background-color: #000000;
+        background-image:url("textures/BackgroundStar.jpg");
+        height: -webkit-fill-available;
+        position: absolute;
+        top: 0px; width: 100%;
+        color: #ffffff;
+        padding: 5px;
+        font-family:Monospace;
+        font-size:13px;
+        font-weight: bold;
+        text-align:center;
+        box-sizing: border-box;
+    }
+    
+    #Main {
+        position: absolute;
+        top: 100px; width: 100%;
+        color: #ffffff;
+        padding: 5px;
+        font-family:Monospace;
+        font-size:13px;
+        font-weight: bold;
+        text-align:center;
+        box-sizing: border-box;
+        z-index = 1;
+    }
+    
+    #Tutorial {
+        position: absolute;
+        top: 100px; width: 100%;
+        color: white;
+        padding: 5px;
+        font-family:Monospace;
+        font-size:13px;
+        font-weight: bold;
+        text-align:center;
+        box-sizing: border-box;
+        z-index = 1;
+    }
+    
+    #EndingGame {
+        position: absolute;
+        top: 100px; width: 100%;
+        color: white;
+        padding: 5px;
+        font-family:Monospace;
+        font-size:13px;
+        font-weight: bold;
+        text-align:center;
+        box-sizing: border-box;
+        z-index = 1;
+    }
+    
+    a {
+        color: #ff8800;
+    }
+        
+    .mybtn {
+        background-color: rgba(0, 0, 0, 0);
+        border: 2px solid;
+        color: white;
+        padding: 15px;
+        width: 150 px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing:2px;
+        margin: 4px 10px;  
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        cursor: pointer;  
+    }
 
+    .clickmybtn {
+        background-color: rgba(0, 0, 0, 0);
+        color: #e6e6e6;
+        border: 2px solid #e6e6e6;
+    }
+
+    .clickmybtn:hover {
+        background-color: #e6e6e6;
+        border: 2px solid #e6e6e6;
+        color: #1a1a1a;
+    }
+</style>
+<body>
+    <div id = "container">
+        <div id="Background">
+        </div>
+        
+        <div id="Main">
+            <h1>台 灣 萊 雅</h1>
+            <h1>Find your power stone</h1>
+            <h2>尋找你的能力寶石</h2>
+            <button class ="mybtn clickmybtn" onclick="LanguageFunction(1)"> 繁體中文 </button>
+            <button class ="mybtn clickmybtn" onclick="LanguageFunction(2)"> English </button>
+        </div>
+        
+        <div id="Tutorial">
+            <img id = "tutorialimg " src="textures/phoneturn.png" alt="tutorial" width="100" > <br/>
+            <h3 id = "tutorialtext">旋轉手機尋找能力寶石</h3>
+        </div>
+        
+        <div id="EndingGame">
+            <h1 id = "Endtext ">恭喜你找到所有能力寶石</h1>
+            <h2 id = "Endtext2 ">Congraulation</h2>
+            <button class ="mybtn clickmybtn" onclick="location.href='https://www.google.com.tw'"> 填問卷去 </button>
+        </div>
+        
+        <div id="Debug">
+            <p id="Counting"></p>
+        </div>    
+    </div>
+        
+    <script src="build/three.js"></script>
+    <script src="js/ar.js"></script>
+    <script src="js/controls/DeviceOrientationControls.js"></script>
+    <script src="js/WebGL.js"></script>
+    <script src="js/threex.domevents.js"></script>
+    <script src="js/TweenMax.min.js"></script>
+    <script src="js/GLTFLoader.js"></script>
+    <script src="js/OBJLoader.js"></script>
+    <script src="js/MTLLoader.js"></script>
+
+<script>
+    Tutorial.style.display = "none";
+    EndingGame.style.display = "none";
+    TweenMax.from("#Background", 0.5 , { y:-5,opacity:0 ,delay:1});
+    TweenMax.from("#Main", 0.5 , { y:-5,opacity:0 ,delay:1.25});
+    var StartGame = false;
+    var CountNumber = 0 ;
+    var Language = "Chinese";
+    
+    function LanguageFunction(language){
+        Tutorial.style.display = "block";
+        if(language == 1){
+            Language = "Chinese";
+            document.getElementById("tutorialtext").innerHTML = "旋轉手機尋找能力寶石" ;
+            console.log("chinese");
+        }if(language == 2){
+            Language = "English";
+            document.getElementById("tutorialtext").innerHTML = "Turn your Phone to find power stone" ;
+            console.log("English");
+        }
+        StartGamefunction();
+    }
+    
+    function StartGamefunction(){
+        StartGame = true;
+        TweenMax.to("#Background", 0.5 , { y:-5,opacity:0});
+        TweenMax.to("#Main", 0.5 , { y:-5,opacity:0,delay:0.25});
+        
+        TweenMax.from("#Tutorial", 0.5 , { y:-5,opacity:0 ,delay:1} );
+        TweenMax.to("#Tutorial", 0.5 , { opacity:0 ,delay:5} );
+        init();
+        animate();
+        var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
+        domEvents.addEventListener(scene.getObjectByName("Diamond1cube"), 'touchstart' , event =>{
+            infoanim("R1");
+        })
+        domEvents.addEventListener(scene.getObjectByName("Diamond2cube"), 'touchstart' , event =>{
+            infoanim("R2");
+        })
+    }
+    var camera, scene, renderer, controls;
+    
+    function init(){
+        // init renderer
+        renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: true
+        });
+        renderer.setClearColor(new THREE.Color('lightgrey'), 0)
+        renderer.setSize( 640, 480 );
+        renderer.domElement.style.position = 'absolute'
+        renderer.domElement.style.top = '0px'
+        renderer.domElement.style.left = '0px'
+        document.body.appendChild( renderer.domElement );
+        // array of functions for the rendering loop
+        var onRenderFcts= [];
+        // init scene and camera
+        scene = new THREE.Scene();
+   
+        //Create a camera
+        camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
+        controls = new THREE.DeviceOrientationControls( camera );
+        scene.add(camera);
+    
+        //handle arToolkitSource
+        var arToolkitSource = new THREEx.ArToolkitSource({
+            sourceType : 'webcam',        
+        })
+        
+        arToolkitSource.init(function onReady(){
+            onResize()
+        })
+    
+        // handle resize
+        window.addEventListener('resize', function(){
+            onResize()
+        })
+        
+        function onResize(){
+            arToolkitSource.onResize()    
+            arToolkitSource.copySizeTo(renderer.domElement)    
+            if( arToolkitContext.arController !== null ){
+                arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)    
+        }    
+    }
+        
+    //initialize arToolkitContext
+    // create atToolkitContext
+    var arToolkitContext = new THREEx.ArToolkitContext({
+        cameraParametersUrl: THREEx.ArToolkitContext.baseURL + '../data/data/camera_para.dat',
+        detectionMode: 'mono',
+    })
+    // initialize it
+    arToolkitContext.init(function onCompleted(){
+        // copy projection matrix to camera
+        camera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
+    })
+    // update artoolkit on every frame
+    onRenderFcts.push(function(){
+        if( arToolkitSource.ready === false )    return
+        arToolkitContext.update( arToolkitSource.domElement )
+        
+        // update scene.visible if the marker is seen
+        scene.visible = camera.visible
+    })
+        
+    //////////////////////////////////////////////////////////////////////////////////
+    //        add an object in the scene
+    /*    
+    var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
+        var geometry = new THREE.PlaneGeometry( 50,50);
+        var material = new THREE.MeshBasicMaterial( { map: texture } );
+        planemesh = new THREE.Mesh( geometry, material );
+        
+        //planemesh.rotation.y = 90 ;
+        planemesh.position.set( 100, 50, 0 );
+        planemesh.lookAt( camera.position );
+        scene.add( planemesh );
+        
+        var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
+        var geometry = new THREE.PlaneGeometry( 50,50);
+        var material = new THREE.MeshBasicMaterial( { map: texture } );
+        planemesh2 = new THREE.Mesh( geometry, material );
+        //planemesh2.rotation.y = 90 ;
+        planemesh2.position.set( -100,0, 100 );
+        planemesh2.lookAt( camera.position );
+        scene.add( planemesh2 );
+      */  
+
+        var ColorArray = new Array();
+        ColorArray[0] = '0x00FF00';
+        ColorArray[1] = '0xff0000';
+        ColorArray[2] = '0x0000FF';
+        
+        var NameArray = new Array();
+        NameArray[0] = 'Diamond1';
+        NameArray[1] = 'Diamond2';
+        NameArray[2] = 'Diamond3';
+        
+    AddNewModel( NameArray[0] , ColorArray[0] ,-100,0,0);
+    console.log("Name"+NameArray[0] +"Color"+ ColorArray[0]);
+
+    AddNewModel( NameArray[1] , ColorArray[1] ,-100,30,0);
+    console.log("Name"+NameArray[1] +"Color"+ ColorArray[1]);
+    //////////////////////////////////////////////////////////////////////////////////
+            //Add a light
+
+    var light = new THREE.DirectionalLight( 0xffffff );
+    light.position.set( 1, 1, 1 );
+    scene.add( light );
+    var light = new THREE.DirectionalLight( 0x002288 );
+    light.position.set( -1, -1, -1 );
+    scene.add( light );
+    // 环境光,无处不在
+    var light = new THREE.AmbientLight( 0x222222 );
+    scene.add( light );
+        
+    window.addEventListener( 'resize', onWindowResize, false );    
+}
+    //////////////////////////////////////////////////////////////////////////////////     
+    function animate() {
+                window.requestAnimationFrame( animate );
+                controls.update();
+                renderer.render( scene, camera );
+            }
+   function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize( window.innerWidth, window.innerHeight );
+            }
+   //生成model
+    function AddNewModel( MeshName , ModelColor , x , y , z){
+        var loader = new THREE.OBJLoader()
+        loader.load( 'model/Diamond.obj', function ( object ) {
+            object.traverse( function ( child ) {
+                if ( child instanceof THREE.Mesh ) {
+                    child.material.color.setHex(ModelColor);
+                }
+            }
+        );
+        scene.add( object );
+        object.scale.set(0.5,0.5,0.5);
+        object.name = MeshName;     
+        object.position.set(x,y,z);
+        console.log("Name"+object.name +"Color"+ ModelColor + "object.position"+object.position.y);
+        });
+
+        var cubegeometry = new THREE.BoxGeometry( 20 , 15 , 15 );
+        var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.1 });
+        var cubemesh = new THREE.Mesh( cubegeometry, cubematerial );
+        cubemesh.position.set(x,y+5,z) ;
+        scene.add( cubemesh );
+        cubemesh.name = MeshName+"cube";
+        console.log("cubeName"+cubemesh.name);
+    }
+
+    //要出現的資訊        
+    function infoanim(DName){
+        if(DName == "R1"){
+            this.t3 = new TimelineMax();
+            Diamond1cube = scene.getObjectByName("Diamond1cube"); 
+            this.t3.to(Diamond1cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+            //定義寶石名稱
+            Diamond1 = scene.getObjectByName("Diamond1"); 
+            //寶石消失
+            this.t3.to(Diamond1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            
+            var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
+            var geometry = new THREE.PlaneGeometry( 50,50);
+            var material = new THREE.MeshBasicMaterial( { map: texture } );
+            infored = new THREE.Mesh( geometry, material );
+            infored.position.x = Diamond1.position.x;
+            infored.position.y = Diamond1.position.y;
+            infored.position.z = Diamond1.position.z;
+            
+            
+            
+            infored.lookAt( camera.position );
+            scene.add( infored );
+            this.t3.from(infored.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+        }
+        if(DName == "R2"){
+            this.t3 = new TimelineMax();
+            Diamond2cube = scene.getObjectByName("Diamond2cube"); 
+            this.t3.to(Diamond2cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+            //定義寶石名稱
+            Diamond2 = scene.getObjectByName("Diamond2"); 
+            //寶石消失
+            this.t3.to(Diamond2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            
+            var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
+            var geometry = new THREE.PlaneGeometry( 50,50);
+            var material = new THREE.MeshBasicMaterial( { map: texture } );
+            infored = new THREE.Mesh( geometry, material );
+            infored.position.x = Diamond2.position.x;
+            infored.position.y = Diamond2.position.y;
+            infored.position.z = Diamond2.position.z;
+            
+            
+            
+            infored.lookAt( camera.position );
+            scene.add( infored );
+            this.t3.from(infored.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+        }
+        EndGameCountDown();
+    }
+    
+    function EndGameCountDown(){  
+        CountNumber++;
+        document.getElementById("Counting").innerHTML = CountNumber;
+        if(CountNumber >= 2){
+            controls.enable = false;
+            document.getElementById("Background").style.display = "block";
+            TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
+            document.getElementById("EndingGame").style.display = "block";
+            var EndGameAnim = new TimelineLite();
+            EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
+               renderer.domElement.style.top = '600px';
+                    }})
+         }    
+     }
+        </script>
+    </body>
+</html>
