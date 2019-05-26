@@ -343,9 +343,9 @@
     AddNewModel( NameArray[9] , ColorArray[9] ,-110,-20,40);   //紫
     AddNewModel( NameArray[10] , ColorArray[10] ,0,-25,110);   //黃
     //random
-    var randomNum = Math.random() * 100 + 30 ;
+    var randomNum = Math.random() * 100 + 20 ;
     AddNewModel( NameArray[11] , ColorArray[11] ,-110,randomNum,-randomNum);  //綠
-    AddNewModel( NameArray[12] , ColorArray[12] ,randomNum,-randomNum,110);   //紫
+    AddNewModel( NameArray[12] , ColorArray[12] ,-randomNum,-randomNum,110);   //紫
     AddNewModel( NameArray[13] , ColorArray[13] ,randomNum,-110,randomNum);   //黃
     /* 
     AddPlanet(P0texture);
@@ -502,8 +502,8 @@
             DiamondR1info.position.copy(DiamondR1.position);         
             DiamondR1info.lookAt( camera.position );
             scene.add( DiamondR1info );
-            this.R1.from(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            this.R1.from(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.R1.from(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.5");
+            this.R1.from(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
             this.R1.to(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
             this.R1.to(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
             EndGameCountDown();
@@ -531,8 +531,8 @@
             DiamondG1info.position.copy(DiamondG1.position);    
             DiamondG1info.lookAt( camera.position );
             scene.add( DiamondG1info );
-            this.G1.from(DiamondG1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            this.G1.from(DiamondG1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.G1.from(DiamondG1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.5");
+            this.G1.from(DiamondG1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
             this.G1.to(DiamondG1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
             this.G1.to(DiamondG1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
             EndGameCountDown();
@@ -560,8 +560,8 @@
             DiamondB1info.position.copy(DiamondB1.position);         
             DiamondB1info.lookAt( camera.position );
             scene.add( DiamondB1info );
-            this.B1.from(DiamondB1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            this.B1.from(DiamondB1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.B1.from(DiamondB1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.5");
+            this.B1.from(DiamondB1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
             this.B1.to(DiamondB1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
             this.B1.to(DiamondB1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
             EndGameCountDown();
@@ -589,8 +589,8 @@
             DiamondP1info.position.copy(DiamondP1.position);       
             DiamondP1info.lookAt( camera.position );
             scene.add( DiamondP1info );
-            this.P1.from(DiamondP1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            this.P1.from(DiamondP1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.P1.from(DiamondP1people.scale, 0.5 , { x:0 , y:0 , z:0 ,ease: Back.easeOut.config(1.4)},"-=0.5");
+            this.P1.from(DiamondP1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
             this.P1.to(DiamondP1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
             this.P1.to(DiamondP1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
             EndGameCountDown();
@@ -618,8 +618,8 @@
             DiamondY1info.position.copy(DiamondY1.position);    
             DiamondY1info.lookAt( camera.position );
             scene.add( DiamondY1info );
-            this.Y1.from(DiamondY1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            this.Y1.from(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.Y1.from(DiamondY1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.5");
+            this.Y1.from(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
             this.Y1.to(DiamondY1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
             this.Y1.to(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
             EndGameCountDown();
@@ -647,8 +647,8 @@
             DiamondO1info.position.copy (DiamondO1.position);
             DiamondO1info.lookAt( camera.position );
             scene.add( DiamondO1info );
-            this.O1.from(DiamondO1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            this.O1.from(DiamondO1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.O1.from(DiamondO1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.5");
+            this.O1.from(DiamondO1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
             this.O1.to(DiamondO1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
             this.O1.to(DiamondO1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
         }
@@ -670,7 +670,7 @@
             DiamondR1Winfo.position.copy(DiamondR1W.position);         
             DiamondR1Winfo.lookAt( camera.position );
             scene.add( DiamondR1Winfo );
-            this.R1W.from(DiamondR1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.R1W.from(DiamondR1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
             this.R1W.to(DiamondR1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
         if(DName == "G1W"){
@@ -690,7 +690,7 @@
             DiamondG1Winfo.position.copy(DiamondG1W.position);         
             DiamondG1Winfo.lookAt( camera.position );
             scene.add( DiamondG1Winfo );
-            this.G1W.from(DiamondG1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.G1W.from(DiamondG1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
             this.G1W.to(DiamondG1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
         if(DName == "B1W"){
@@ -710,7 +710,7 @@
             DiamondB1Winfo.position.copy(DiamondB1W.position);         
             DiamondB1Winfo.lookAt( camera.position );
             scene.add( DiamondB1Winfo );
-            this.B1W.from(DiamondB1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.B1W.from(DiamondB1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
             this.B1W.to(DiamondB1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
         if(DName == "P1W"){
@@ -730,7 +730,7 @@
             DiamondP1Winfo.position.copy(DiamondP1W.position);         
             DiamondP1Winfo.lookAt( camera.position );
             scene.add( DiamondP1Winfo );
-            this.P1W.from(DiamondP1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.P1W.from(DiamondP1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
             this.P1W.to(DiamondP1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
         if(DName == "Y1W"){
@@ -750,7 +750,7 @@
             DiamondY1Winfo.position.copy(DiamondY1W.position);         
             DiamondY1Winfo.lookAt( camera.position );
             scene.add( DiamondY1Winfo );
-            this.Y1W.from(DiamondY1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.Y1W.from(DiamondY1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 ,ease: Back.easeOut.config(1.4)},"-=0.35");
             this.Y1W.to(DiamondY1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
 	if(DName == "M1"){
@@ -770,7 +770,7 @@
             DiamondM1info.position.copy(DiamondM1.position);         
             DiamondM1info.lookAt( camera.position );
             scene.add( DiamondM1info );
-            this.M1.from(DiamondM1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.M1.from(DiamondM1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
             this.M1.to(DiamondM1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
 	if(DName == "M2"){
@@ -790,7 +790,7 @@
             DiamondM2info.position.copy(DiamondM2.position);         
             DiamondM2info.lookAt( camera.position );
             scene.add( DiamondM2info );
-            this.M2.from(DiamondM2info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.M2.from(DiamondM2info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
             this.M2.to(DiamondM2info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
 	if(DName == "M3"){
@@ -810,7 +810,7 @@
             DiamondM3info.position.copy(DiamondM3.position);         
             DiamondM3info.lookAt( camera.position );
             scene.add( DiamondM3info );
-            this.M3.from(DiamondM3info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.M3.from(DiamondM3info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
             this.M3.to(DiamondM3info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
     }
