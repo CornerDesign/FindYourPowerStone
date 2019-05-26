@@ -347,7 +347,7 @@
     AddNewModel( NameArray[11] , ColorArray[11] ,-110,randomNum,-randomNum);  //綠
     AddNewModel( NameArray[12] , ColorArray[12] ,randomNum,-randomNum,110);   //紫
     AddNewModel( NameArray[13] , ColorArray[13] ,randomNum,-110,randomNum);   //黃
-        
+    /* 
     AddPlanet(P0texture);
     AddPlanet(P1texture);
     AddPlanet(P2texture);
@@ -357,7 +357,7 @@
     AddPlanet(P6texture);
     AddPlanet(P7texture);
     AddPlanet(P8texture);
-	  
+    */	  
     //Add a light
 
     var light = new THREE.DirectionalLight( 0xffffff );
@@ -424,7 +424,7 @@
     	Wrong2texture = textureLoader.load( 'textures/wronganswer/wrong2.png' );
 	    
 	//星球
-	P0texture = textureLoader.load( 'textures/planet/planet0.png' );
+/*	P0texture = textureLoader.load( 'textures/planet/planet0.png' );
 	P1texture = textureLoader.load( 'textures/planet/planet1.png' );
 	P2texture = textureLoader.load( 'textures/planet/planet2.png' );
    	P3texture = textureLoader.load( 'textures/planet/planet3.png' );
@@ -433,6 +433,7 @@
 	P6texture = textureLoader.load( 'textures/planet/planet6.png' );
 	P7texture = textureLoader.load( 'textures/planet/planet7.png' );
 	P8texture = textureLoader.load( 'textures/planet/planet8.png' );
+*/
     }
 	
 	
@@ -466,6 +467,7 @@
 
 
     //生成planet
+    /*
     function AddPlanet( TextureName ){
  	var geometry = new THREE.PlaneGeometry( 20,20);
    	var material = new THREE.MeshBasicMaterial( { map: TextureName } );
@@ -474,7 +476,7 @@
     	planemesh.lookAt(camera.position);
     	scene.add( planemesh );    
     }
-	
+    */
     //要出現的資訊        
     function infoanim(DName){
         if(DName == "R1"){
