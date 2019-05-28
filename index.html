@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Find Your Power Stone</title>
+    <title>deviceorientation</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="user-scalable=no, initial-scale=1">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
     <script src = "https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="build/three.js"></script>
 </head>
@@ -19,7 +19,9 @@
     }
     #Background {
         background-color: #000000;
-        background-image:url("textures/BackgroundStar.jpg");
+        background-image:url("textures/BackgroundStart.jpg");
+	background-reapeat:no-repeat;
+	background-size:100% 100%;
         height: -webkit-fill-available;
         position: absolute;
         top: 0px; width: 100%;
@@ -35,7 +37,7 @@
     
     #Main {
         position: absolute;
-        top: 100px; width: 100%;
+        top: 80%; width: 100%;
         color: #ffffff;
         padding: 5px;
         font-family:Monospace;
@@ -73,7 +75,7 @@
     
     #EndingGame {
         position: absolute;
-        top: 100px; width: 100%;
+        top: 43%; width: 100%;
         color: white;
         padding: 5px;
         font-family:Monospace;
@@ -124,9 +126,6 @@
         </div>
         
         <div id="Main">
-            <h1>台 灣 萊 雅</h1>
-            <h1>Find your power stone</h1>
-            <h2>尋找你的能力寶石</h2>
             <button class ="mybtn clickmybtn" onclick="LanguageFunction(1)"> 繁體中文 </button>
             <button class ="mybtn clickmybtn" onclick="LanguageFunction(2)"> English </button>
         </div>
@@ -141,8 +140,6 @@
         </div>
         
         <div id="EndingGame">
-            <h1 id = "Endtext ">恭喜你找到所有能力寶石</h1>
-            <h2 id = "Endtext2 ">Congraulation</h2>
             <button class ="mybtn clickmybtn" onclick="location.href='https://www.google.com.tw'"> 填問卷去 </button>
         </div>
         
@@ -198,7 +195,7 @@
         StartGame = true;
         TweenMax.to("#Background", 0.5 , { y:-5,opacity:0});
         TweenMax.to("#Main", 0.5 , { y:-5,opacity:0,delay:0.25});
-        
+        document.getElementById("Background").style.backgroundImage = "url(textures/BackgroundEnd.jpg)";
         TweenMax.from("#Tutorial", 0.5 , { y:-5,opacity:0 ,delay:1} );
         TweenMax.to("#Tutorial", 0.5 , { opacity:0 ,delay:5} );
         init();
@@ -303,10 +300,14 @@
     ColorArray[8] = '0x0099ff';
     ColorArray[9] = '0x9933ff';
     ColorArray[10] = '0xffff00';
-    //random
-    ColorArray[11] = '0x00FF00';
-    ColorArray[12] = '0x9933ff';
-    ColorArray[13] = '0xffff00';
+    //random color array
+    var RandomColorArray = new Array();	    
+    RandomColorArray[0] = '0x4efdda';
+    RandomColorArray[1] = '0x00ffbf';
+    RandomColorArray[2] = '0xff00ff';
+    RandomColorArray[3] = '0x828585';
+    RandomColorArray[4] = '0xf4c0a8';
+    RandomColorArray[5] = '0x00c0a8';
         
     var NameArray = new Array();
     //對的
@@ -343,21 +344,22 @@
     AddNewModel( NameArray[9] , ColorArray[9] ,-110,-20,40);   //紫
     AddNewModel( NameArray[10] , ColorArray[10] ,0,-25,110);   //黃
     //random
-    var randomNum = Math.random() * 100 + 20 ;
-    AddNewModel( NameArray[11] , ColorArray[11] ,-110,randomNum,-randomNum);  //綠
-    AddNewModel( NameArray[12] , ColorArray[12] ,-randomNum,-randomNum,110);   //紫
-    AddNewModel( NameArray[13] , ColorArray[13] ,randomNum,-110,randomNum);   //黃
-    /* 
-    AddPlanet(P0texture);
-    AddPlanet(P1texture);
-    AddPlanet(P2texture);
-    AddPlanet(P3texture);
-    AddPlanet(P4texture);
-    AddPlanet(P5texture);
-    AddPlanet(P6texture);
-    AddPlanet(P7texture);
-    AddPlanet(P8texture);
-    */	  
+    //var randomNum = Math.random() * 100 + 30 ;
+	
+    AddNewModel( NameArray[11] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,-110,Math.floor(Math.random()*200)-100,Math.floor(Math.random()*200)-100);  //綠
+    AddNewModel( NameArray[12] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*200)-100,Math.floor(Math.random()*200)-100,110);   //紫
+    AddNewModel( NameArray[13] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*200)-100,-110,Math.floor(Math.random()*200)-100);   //黃
+        
+    AddPlanet(Pl0texture,-130,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130);
+    AddPlanet(Pl1texture,Math.floor(Math.random()*260)-130,-130,Math.floor(Math.random()*260)-130);
+    AddPlanet(Pl2texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,-130);
+    AddPlanet(Pl3texture,130,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130);
+    AddPlanet(Pl4texture,Math.floor(Math.random()*260)-130,130,Math.floor(Math.random()*260)-130);
+    AddPlanet(Pl5texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,130);
+    AddPlanet(Pl6texture,-130,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130);
+    AddPlanet(Pl7texture,Math.floor(Math.random()*260)-130,-130,Math.floor(Math.random()*260)-130);
+    AddPlanet(Pl8texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,-130);
+	  
     //Add a light
 
     var light = new THREE.DirectionalLight( 0xffffff );
@@ -392,48 +394,47 @@
     	var textureLoader = new THREE.TextureLoader();
     	//對的
     	R1texture = textureLoader.load( 'textures/redpeople.png' );       
-    	R1infotexture = textureLoader.load( 'textures/info/redinfo.png' );
-    	R1info2texture = textureLoader.load( 'textures/info/redinfo2.png' );
+    	R1infotexture = textureLoader.load( 'textures/info/white/redinfo.png' );
+    	R1info2texture = textureLoader.load( 'textures/info/white/redinfo2.png' );
     	G1texture = textureLoader.load( 'textures/greenpeople.png' );       
-    	G1infotexture = textureLoader.load( 'textures/info/greeninfo.png' );
-    	G1info2texture = textureLoader.load( 'textures/info/greeninfo2.png' );
+    	G1infotexture = textureLoader.load( 'textures/info/white/greeninfo.png' );
+    	G1info2texture = textureLoader.load( 'textures/info/white/greeninfo2.png' );
     	B1texture = textureLoader.load( 'textures/bluepeople.png' );       
-    	B1infotexture = textureLoader.load( 'textures/info/blueinfo.png' );
-    	B1info2texture = textureLoader.load( 'textures/info/blueinfo2.png' );
+    	B1infotexture = textureLoader.load( 'textures/info/white/blueinfo.png' );
+    	B1info2texture = textureLoader.load( 'textures/info/white/blueinfo2.png' );
     	P1texture = textureLoader.load( 'textures/purplepeople.png' );       
-    	P1infotexture = textureLoader.load( 'textures/info/purpleinfo.png' );
-    	P1info2texture = textureLoader.load( 'textures/info/purpleinfo2.png' );
+    	P1infotexture = textureLoader.load( 'textures/info/white/purpleinfo.png' );
+    	P1info2texture = textureLoader.load( 'textures/info/white/purpleinfo2.png' );
     	Y1texture = textureLoader.load( 'textures/yellowpeople.png' );       
-    	Y1infotexture = textureLoader.load( 'textures/info/yellowinfo.png' );
-   	Y1info2texture = textureLoader.load( 'textures/info/yellowinfo2.png' );
+    	Y1infotexture = textureLoader.load( 'textures/info/white/yellowinfo.png' );
+   	Y1info2texture = textureLoader.load( 'textures/info/white/yellowinfo2.png' );
     	O1texture = textureLoader.load( 'textures/orangepeople.png' );       
-    	O1infotexture = textureLoader.load( 'textures/info/orangeinfo.png' );
-    	O1info2texture = textureLoader.load( 'textures/info/orangeinfo2.png' );
+    	O1infotexture = textureLoader.load( 'textures/info/white/orangeinfo.png' );
+    	O1info2texture = textureLoader.load( 'textures/info/white/orangeinfo2.png' );
     	//錯的
-    	R1Wtexture = textureLoader.load( 'textures/wronganswer/redwrong.png' );
-    	R1W2texture = textureLoader.load( 'textures/wronganswer/redwrong2.png' );
-    	G1Wtexture = textureLoader.load( 'textures/wronganswer/greenwrong.png' );
-    	G1W2texture = textureLoader.load( 'textures/wronganswer/greenwrong2.png' );
-    	B1Wtexture = textureLoader.load( 'textures/wronganswer/bluewrong.png' );
-    	B1W2texture = textureLoader.load( 'textures/wronganswer/bluewrong2.png' );
-    	P1Wtexture = textureLoader.load( 'textures/wronganswer/purplewrong.png' );
-    	P1W2texture = textureLoader.load( 'textures/wronganswer/purplewrong2.png' );
-    	Y1Wtexture = textureLoader.load( 'textures/wronganswer/yellowwrong.png' );
-    	Y1W2texture = textureLoader.load( 'textures/wronganswer/yellowwrong2.png' );
-    	Wrongtexture = textureLoader.load( 'textures/wronganswer/wrong.png' );
-    	Wrong2texture = textureLoader.load( 'textures/wronganswer/wrong2.png' );
+    	R1Wtexture = textureLoader.load( 'textures/wronganswer/white/redwrong.png' );
+    	R1W2texture = textureLoader.load( 'textures/wronganswer/white/redwrong2.png' );
+    	G1Wtexture = textureLoader.load( 'textures/wronganswer/white/greenwrong.png' );
+    	G1W2texture = textureLoader.load( 'textures/wronganswer/white/greenwrong2.png' );
+    	B1Wtexture = textureLoader.load( 'textures/wronganswer/white/bluewrong.png' );
+    	B1W2texture = textureLoader.load( 'textures/wronganswer/white/bluewrong2.png' );
+    	P1Wtexture = textureLoader.load( 'textures/wronganswer/white/purplewrong.png' );
+    	P1W2texture = textureLoader.load( 'textures/wronganswer/white/purplewrong2.png' );
+    	Y1Wtexture = textureLoader.load( 'textures/wronganswer/white/yellowwrong.png' );
+    	Y1W2texture = textureLoader.load( 'textures/wronganswer/white/yellowwrong2.png' );
+    	Wrongtexture = textureLoader.load( 'textures/wronganswer/white/wrong.png' );
+    	Wrong2texture = textureLoader.load( 'textures/wronganswer/white/wrong2.png' );
 	    
 	//星球
-/*	P0texture = textureLoader.load( 'textures/planet/planet0.png' );
-	P1texture = textureLoader.load( 'textures/planet/planet1.png' );
-	P2texture = textureLoader.load( 'textures/planet/planet2.png' );
-   	P3texture = textureLoader.load( 'textures/planet/planet3.png' );
-	P4texture = textureLoader.load( 'textures/planet/planet4.png' );
-	P5texture = textureLoader.load( 'textures/planet/planet5.png' );
-	P6texture = textureLoader.load( 'textures/planet/planet6.png' );
-	P7texture = textureLoader.load( 'textures/planet/planet7.png' );
-	P8texture = textureLoader.load( 'textures/planet/planet8.png' );
-*/
+	Pl0texture = textureLoader.load( 'textures/planet/planet0.png' );
+	Pl1texture = textureLoader.load( 'textures/planet/planet1.png' );
+	Pl2texture = textureLoader.load( 'textures/planet/planet2.png' );
+   	Pl3texture = textureLoader.load( 'textures/planet/planet3.png' );
+	Pl4texture = textureLoader.load( 'textures/planet/planet4.png' );
+	Pl5texture = textureLoader.load( 'textures/planet/planet5.png' );
+	Pl6texture = textureLoader.load( 'textures/planet/planet6.png' );
+	Pl7texture = textureLoader.load( 'textures/planet/planet7.png' );
+	Pl8texture = textureLoader.load( 'textures/planet/planet8.png' );
     }
 	
 	
@@ -467,16 +468,15 @@
 
 
     //生成planet
-    /*
-    function AddPlanet( TextureName ){
+    function AddPlanet( TextureName ,x,y,z){
  	var geometry = new THREE.PlaneGeometry( 20,20);
    	var material = new THREE.MeshBasicMaterial( { map: TextureName } );
     	planemesh = new THREE.Mesh( geometry, material );
-    	planemesh.position.set( -130, Math.random() * 100 + 30 , Math.random() * 100 + 30 );
+    	planemesh.position.set( x , y , z);
     	planemesh.lookAt(camera.position);
     	scene.add( planemesh );    
     }
-    */
+	
     //要出現的資訊        
     function infoanim(DName){
         if(DName == "R1"){
@@ -502,10 +502,10 @@
             DiamondR1info.position.copy(DiamondR1.position);         
             DiamondR1info.lookAt( camera.position );
             scene.add( DiamondR1info );
-            this.R1.from(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.5");
-            this.R1.from(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
-            this.R1.to(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
-            this.R1.to(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
+            this.R1.from(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            this.R1.from(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.R1.to(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7);
+            this.R1.to(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7.15);
             EndGameCountDown();
         }
         if(DName == "G1"){
@@ -531,10 +531,10 @@
             DiamondG1info.position.copy(DiamondG1.position);    
             DiamondG1info.lookAt( camera.position );
             scene.add( DiamondG1info );
-            this.G1.from(DiamondG1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.5");
-            this.G1.from(DiamondG1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
-            this.G1.to(DiamondG1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
-            this.G1.to(DiamondG1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
+            this.G1.from(DiamondG1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            this.G1.from(DiamondG1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.G1.to(DiamondG1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7);
+            this.G1.to(DiamondG1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7.15);
             EndGameCountDown();
         }
         if(DName == "B1"){
@@ -560,10 +560,10 @@
             DiamondB1info.position.copy(DiamondB1.position);         
             DiamondB1info.lookAt( camera.position );
             scene.add( DiamondB1info );
-            this.B1.from(DiamondB1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.5");
-            this.B1.from(DiamondB1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
-            this.B1.to(DiamondB1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
-            this.B1.to(DiamondB1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
+            this.B1.from(DiamondB1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            this.B1.from(DiamondB1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.B1.to(DiamondB1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7);
+            this.B1.to(DiamondB1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7.15);
             EndGameCountDown();
         }
         if(DName == "P1"){
@@ -589,10 +589,10 @@
             DiamondP1info.position.copy(DiamondP1.position);       
             DiamondP1info.lookAt( camera.position );
             scene.add( DiamondP1info );
-            this.P1.from(DiamondP1people.scale, 0.5 , { x:0 , y:0 , z:0 ,ease: Back.easeOut.config(1.4)},"-=0.5");
-            this.P1.from(DiamondP1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
-            this.P1.to(DiamondP1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
-            this.P1.to(DiamondP1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
+            this.P1.from(DiamondP1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            this.P1.from(DiamondP1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.P1.to(DiamondP1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7);
+            this.P1.to(DiamondP1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7.15);
             EndGameCountDown();
         }
         if(DName == "Y1"){
@@ -618,10 +618,10 @@
             DiamondY1info.position.copy(DiamondY1.position);    
             DiamondY1info.lookAt( camera.position );
             scene.add( DiamondY1info );
-            this.Y1.from(DiamondY1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.5");
-            this.Y1.from(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
-            this.Y1.to(DiamondY1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
-            this.Y1.to(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
+            this.Y1.from(DiamondY1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            this.Y1.from(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.Y1.to(DiamondY1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7);
+            this.Y1.to(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7.15);
             EndGameCountDown();
         }
          if(DName == "O1"){
@@ -631,7 +631,7 @@
             //定義寶石名稱
             DiamondO1 = scene.getObjectByName("DiamondO1"); 
             this.O1.to(DiamondO1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 11.58 , 25.81 );//腳色*2
+            var geometry = new THREE.PlaneGeometry( 19.07 , 30.53 );//腳色*2
             var material = new THREE.MeshBasicMaterial( { map: O1texture ,transparent: true, opacity: 0.95 } );
             DiamondO1people = new THREE.Mesh( geometry, material );
             DiamondO1people.position.copy(DiamondO1.position);       
@@ -647,10 +647,10 @@
             DiamondO1info.position.copy (DiamondO1.position);
             DiamondO1info.lookAt( camera.position );
             scene.add( DiamondO1info );
-            this.O1.from(DiamondO1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.5");
-            this.O1.from(DiamondO1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
-            this.O1.to(DiamondO1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
-            this.O1.to(DiamondO1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
+            this.O1.from(DiamondO1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            this.O1.from(DiamondO1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.O1.to(DiamondO1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7);
+            this.O1.to(DiamondO1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7.15);
         }
         if(DName == "R1W"){
             this.R1W = new TimelineMax();
@@ -670,7 +670,7 @@
             DiamondR1Winfo.position.copy(DiamondR1W.position);         
             DiamondR1Winfo.lookAt( camera.position );
             scene.add( DiamondR1Winfo );
-            this.R1W.from(DiamondR1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
+            this.R1W.from(DiamondR1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
             this.R1W.to(DiamondR1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
         if(DName == "G1W"){
@@ -690,7 +690,7 @@
             DiamondG1Winfo.position.copy(DiamondG1W.position);         
             DiamondG1Winfo.lookAt( camera.position );
             scene.add( DiamondG1Winfo );
-            this.G1W.from(DiamondG1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
+            this.G1W.from(DiamondG1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
             this.G1W.to(DiamondG1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
         if(DName == "B1W"){
@@ -710,7 +710,7 @@
             DiamondB1Winfo.position.copy(DiamondB1W.position);         
             DiamondB1Winfo.lookAt( camera.position );
             scene.add( DiamondB1Winfo );
-            this.B1W.from(DiamondB1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
+            this.B1W.from(DiamondB1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
             this.B1W.to(DiamondB1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
         if(DName == "P1W"){
@@ -730,7 +730,7 @@
             DiamondP1Winfo.position.copy(DiamondP1W.position);         
             DiamondP1Winfo.lookAt( camera.position );
             scene.add( DiamondP1Winfo );
-            this.P1W.from(DiamondP1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
+            this.P1W.from(DiamondP1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
             this.P1W.to(DiamondP1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
         if(DName == "Y1W"){
@@ -750,7 +750,7 @@
             DiamondY1Winfo.position.copy(DiamondY1W.position);         
             DiamondY1Winfo.lookAt( camera.position );
             scene.add( DiamondY1Winfo );
-            this.Y1W.from(DiamondY1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 ,ease: Back.easeOut.config(1.4)},"-=0.35");
+            this.Y1W.from(DiamondY1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
             this.Y1W.to(DiamondY1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
 	if(DName == "M1"){
@@ -760,7 +760,7 @@
             //定義寶石名稱
             DiamondM1 = scene.getObjectByName("DiamondM1"); 
             this.M1.to(DiamondM1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 60,60 );
+            var geometry = new THREE.PlaneGeometry( 40,40 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: Wrongtexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
@@ -770,7 +770,7 @@
             DiamondM1info.position.copy(DiamondM1.position);         
             DiamondM1info.lookAt( camera.position );
             scene.add( DiamondM1info );
-            this.M1.from(DiamondM1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
+            this.M1.from(DiamondM1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
             this.M1.to(DiamondM1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
 	if(DName == "M2"){
@@ -780,7 +780,7 @@
             //定義寶石名稱
             DiamondM2 = scene.getObjectByName("DiamondM2"); 
             this.M2.to(DiamondM2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 60,60 );
+            var geometry = new THREE.PlaneGeometry( 40,40 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: Wrongtexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
@@ -790,7 +790,7 @@
             DiamondM2info.position.copy(DiamondM2.position);         
             DiamondM2info.lookAt( camera.position );
             scene.add( DiamondM2info );
-            this.M2.from(DiamondM2info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
+            this.M2.from(DiamondM2info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
             this.M2.to(DiamondM2info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
 	if(DName == "M3"){
@@ -800,7 +800,7 @@
             //定義寶石名稱
             DiamondM3 = scene.getObjectByName("DiamondM3"); 
             this.M3.to(DiamondM3.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 60,60 );
+            var geometry = new THREE.PlaneGeometry( 40,40 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: Wrongtexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
@@ -810,7 +810,7 @@
             DiamondM3info.position.copy(DiamondM3.position);         
             DiamondM3info.lookAt( camera.position );
             scene.add( DiamondM3info );
-            this.M3.from(DiamondM3info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
+            this.M3.from(DiamondM3info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
             this.M3.to(DiamondM3info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
     }
@@ -825,8 +825,8 @@
             document.getElementById("Background").style.display = "block";
             TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
             document.getElementById("EndingGame").style.display = "block";
-            renderer.domElement.style.top = '600px';
-            }},9);
+            renderer.domElement.style.top = '1000px';
+            }},7);
          }    
      }
         </script>
