@@ -263,6 +263,7 @@
                 arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)    
         }    
     }
+	animate(); 
         
     //initialize arToolkitContext
     // create atToolkitContext
@@ -376,7 +377,6 @@
 }
     //////////////////////////////////////////////////////////////////////////////////     
     function animate() {
-
         window.requestAnimationFrame( animate );
         controls.update();
         renderer.render( scene, camera );
