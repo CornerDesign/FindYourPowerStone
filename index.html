@@ -225,7 +225,7 @@
             antialias: true,
             alpha: true
         });
-	renderer.setPixelRatio(window.devicePixelRatio);
+//	renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setClearColor(new THREE.Color('lightgrey'), 0)
         //renderer.setSize( 640, 480 );
 	renderer.setSize(window.innerWidth, window.innerHeight)
@@ -384,7 +384,7 @@
     }
     
     function onWindowResize() {
-	/*
+	
 	    if(camera.inPerspectiveMode){
         camera.cameraP.aspect = window.innerWidth / window.innerHeight;
         camera.cameraP.updateProjectionMatrix();
@@ -398,17 +398,13 @@
     }
 
     renderer.setSize( window.innerWidth, window.innerHeight );
-	    */
-	    /*
-camera.aspect = 1;
-camera.updateProjectionMatrix();
-renderer.setSize(window.innerWidth, window.innerHeight);
-	    */
 	    
+
+	   /* 
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize( window.innerWidth, window.innerHeight );
-	
+	*/
     }
 	
     function LoadImageFirst(){
