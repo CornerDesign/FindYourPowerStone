@@ -225,7 +225,7 @@
             antialias: true,
             alpha: true
         });
-	renderer.setPixelRatio(window.devicePixelRatio);
+	//renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setClearColor(new THREE.Color('lightgrey'), 0)
         //renderer.setSize( 640, 480 );
 	renderer.setSize(window.innerWidth, window.innerHeight)
@@ -397,6 +397,7 @@
         camera.cameraO.updateProjectionMatrix();
     }
 
+	 renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize( window.innerWidth, window.innerHeight );
 	    
 
