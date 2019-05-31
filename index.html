@@ -226,9 +226,11 @@
             alpha: true
         });
 	//renderer.setPixelRatio(window.devicePixelRatio);
+	    
         renderer.setClearColor(new THREE.Color('lightgrey'), 0)
+	renderer.setSize( 1920, 1440 );
         //renderer.setSize( 640, 480 );
-	renderer.setSize(window.innerWidth, window.innerHeight)
+	//renderer.setSize(window.innerWidth, window.innerHeight)
         renderer.domElement.style.position = 'absolute'
         renderer.domElement.style.top = '0px'
         renderer.domElement.style.left = '0px'
@@ -397,8 +399,7 @@
         camera.cameraO.updateProjectionMatrix();
     }
 
-	 renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize( window.innerWidth, window.innerHeight );
+//    renderer.setSize( window.innerWidth, window.innerHeight );
 	    
 
 	   /* 
