@@ -137,7 +137,7 @@
         </div>
         
 	<div id="EndingGame">
-            <button class ="mybtn clickmybtn" id = "EndingButton"  onclick="location.href='https://forms.gle/cK1ZuS3sZY1g1B846'"> 來去抽獎 </button>
+            <input class="mybtn clickmybtn" id = "EndingButton" type="button" onclick="location.href='https://forms.gle/cK1ZuS3sZY1g1B846'" value="來去抽獎" />
         </div>
        
         <div id="Debug">
@@ -842,10 +842,10 @@
             TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
 	    if( Language == "Chinese"){
             	document.getElementById("EndingButton").value = "來去抽獎";
-		document.getElementById("EndingButton").onclick = "location.href='https://forms.gle/cK1ZuS3sZY1g1B846'";
+		document.getElementById("EndingButton").onclick = location.href='https://forms.gle/cK1ZuS3sZY1g1B846';
             }if( Language == "English"){
             	document.getElementById("EndingButton").value = "Go for lottery";
-		document.getElementById("EndingButton").onclick = "location.href='https://forms.gle/MLKgCqDP7Ywd6Zkx9'";
+		document.getElementById("EndingButton").onclick = location.href='https://forms.gle/MLKgCqDP7Ywd6Zkx9';
             }
             document.getElementById("EndingGame").style.display = "block";
             renderer.domElement.style.top = '1000px';
