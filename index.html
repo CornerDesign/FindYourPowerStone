@@ -384,9 +384,24 @@
     }
     
     function onWindowResize() {
+	    if(camera.inPerspectiveMode){
+        camera.cameraP.aspect = window.innerWidth / window.innerHeight;
+        camera.cameraP.updateProjectionMatrix();
+    }
+    else{
+        camera.cameraO.left = window.innerWidth / - 2;
+        camera.cameraO.right = window.innerWidth / 2;
+        camera.cameraO.top = window.innerHeight / 2;
+        camera.cameraO.bottom = window.innerHeight / - 2;
+        camera.cameraO.updateProjectionMatrix();
+    }
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+/*
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize( window.innerWidth, window.innerHeight );
+	*/
     }
 	
     function LoadImageFirst(){
