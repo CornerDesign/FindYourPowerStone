@@ -222,9 +222,10 @@
     function init(){
         // init renderer
         renderer = new THREE.WebGLRenderer({
-            antialias: true,
+//            antialias: true,
             alpha: true
         });
+	renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setClearColor(new THREE.Color('lightgrey'), 0)
         //renderer.setSize( 640, 480 );
 	renderer.setSize(window.innerWidth, window.innerHeight)
