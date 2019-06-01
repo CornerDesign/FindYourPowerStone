@@ -22,7 +22,8 @@
         background-image:url("textures/BackgroundStart.jpg");
 	background-reapeat:no-repeat;
 	background-size:100% 100%;
-        height: -webkit-fill-available;
+/*        height: -webkit-fill-available; */
+	height: 100%;
         position: absolute;
         top: 0px; width: 100%;
         color: #ffffff;
@@ -184,7 +185,7 @@
         }if(language == 2){
             Language = "English";
             document.getElementById("tutorialtext").innerHTML = "Turn your Phone to find power stone" ;
-	    document.getElementById("EndingButton").value = "Go for lottery";
+	    document.getElementById("EndingButton").value = "Get the prize";
             console.log("English");
         }
         StartGamefunction();
@@ -343,26 +344,26 @@
     AddNewModel( NameArray[5] , ColorArray[5] ,-30,10,-90);    //橘
     //錯的    
     AddNewModel( NameArray[6] , ColorArray[6] ,-40,15,110);    //紅
-    AddNewModel( NameArray[7] , ColorArray[7] ,110,-60,-30);    //綠
+    AddNewModel( NameArray[7] , ColorArray[7] ,110,-60,-30);   //綠
     AddNewModel( NameArray[8] , ColorArray[8] ,0,50,-110);     //藍
     AddNewModel( NameArray[9] , ColorArray[9] ,-110,-20,40);   //紫
     AddNewModel( NameArray[10] , ColorArray[10] ,0,-25,110);   //黃
     //random
     //var randomNum = Math.random() * 100 + 30 ;
 	
-    AddNewModel( NameArray[11] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,-110,Math.floor(Math.random()*200)-100,Math.floor(Math.random()*200)-100);  //綠
-    AddNewModel( NameArray[12] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*200)-100,Math.floor(Math.random()*200)-100,110);   //紫
-    AddNewModel( NameArray[13] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*200)-100,-110,Math.floor(Math.random()*200)-100);   //黃
+    AddNewModel( NameArray[11] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,-120,Math.floor(Math.random()*240)-100,Math.floor(Math.random()*200)-100);  //綠
+    AddNewModel( NameArray[12] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*200)-100,Math.floor(Math.random()*200)-100,120);   //紫
+    AddNewModel( NameArray[13] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*200)-100,-120,Math.floor(Math.random()*200)-100);   //黃
         
     AddPlanet(Pl0texture,-130,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130);
     AddPlanet(Pl1texture,130,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130);
     AddPlanet(Pl2texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,-130);
-    AddPlanet(Pl3texture,130,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130);
+    AddPlanet(Pl3texture,140,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130);
     AddPlanet(Pl4texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,130);
-    AddPlanet(Pl5texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,130);
-    AddPlanet(Pl6texture,-130,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130);
+    AddPlanet(Pl5texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,140);
+    AddPlanet(Pl6texture,-140,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-150);
     AddPlanet(Pl7texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,130);
-    AddPlanet(Pl8texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,-130);
+    AddPlanet(Pl8texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,-140);
 	  
     //Add a light
 
