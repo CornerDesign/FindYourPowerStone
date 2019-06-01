@@ -725,7 +725,7 @@
             DiamondO2people = new THREE.Mesh( geometry, material );
             DiamondO2people.position.copy(DiamondO2.position);       
             DiamondO2people.lookAt( camera.position );
-		 DiamondO1people.renderOrder = 1;
+	    DiamondO2people.renderOrder = 1;
             scene.add( DiamondO2people );
             var geometry = new THREE.PlaneGeometry( 75,75 );
             if( Language == "Chinese"){
@@ -740,7 +740,7 @@
             scene.add( DiamondO2info );
             this.O2.from(DiamondO2people.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.25");
             this.O2.from(DiamondO2info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
-            this.O2.to(Diamondo2people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6);
+            this.O2.to(DiamondO2people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6);
             this.O2.to(DiamondO2info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6.15);
         }
         if(DName == "R1W"){
