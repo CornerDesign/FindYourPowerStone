@@ -59,7 +59,19 @@
         box-sizing: border-box;
         z-index = 1;
     }
-    
+    #CountingCollect {
+	position: absolute;
+        top: 90%; width: 100%;
+        color: white;
+        padding: 5px;
+        font-family:Monospace;
+        font-size:13px;
+        font-weight: bold;
+        text-align:center;
+        box-sizing: border-box;
+        z-index = 1;
+    }
+	
     #Tutorial {
         position: absolute;
         top: 100px; width: 100%;
@@ -129,7 +141,9 @@
         </div>
         <div id="Loading">
 	<img id = "Rolling" src="textures/Rolling.png" alt="Rolling" width="50" > <br/>
-	    
+	</div>
+	<div id="CountingCollect">
+	<h3 id = "Collecttext"></h3>
 	</div>
 	    
         <div id="Tutorial">
@@ -181,11 +195,13 @@
             Language = "Chinese";
             document.getElementById("tutorialtext").innerHTML = "旋轉手機尋找能力寶石" ;
 	    document.getElementById("EndingButton").value = "來去抽獎";
+	    document.getElementById("Collecttext").value = "剩5個寶石要搜集";
             console.log("chinese");
         }if(language == 2){
             Language = "English";
             document.getElementById("tutorialtext").innerHTML = "Turn your Phone to find power stone" ;
 	    document.getElementById("EndingButton").value = "Get the prize";
+	    document.getElementById("Collecttext").value = "5 diamonds left to collect";
             console.log("English");
         }
         StartGamefunction();
@@ -856,6 +872,16 @@
     
     function EndGameCountDown(){
         CountNumber++;
+	var leftNumber = 5 - CountNumber;
+	if( Language == "Chinese" ){
+	    document.getElementById("Collecttext").value = "剩 " + leftNumber +" 個寶石要搜集";
+	}if( Language == "English" ){
+	    document.getElementById("Collecttext").value = leftNumber +" diamonds left to collect";
+	}
+	    
+	    
+	    
+	    
         //document.getElementById("Counting").innerHTML = CountNumber;
         if(CountNumber >= 5){
             controls.enable = false;
