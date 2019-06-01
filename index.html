@@ -236,7 +236,8 @@
         domEvents.addEventListener(scene.getObjectByName("DiamondM1cube"), 'touchstart' , event =>{ infoanim("M1"); })
         domEvents.addEventListener(scene.getObjectByName("DiamondM2cube"), 'touchstart' , event =>{ infoanim("M2"); })
         domEvents.addEventListener(scene.getObjectByName("DiamondM3cube"), 'touchstart' , event =>{ infoanim("M3"); })
-        
+        domEvents.addEventListener(scene.getObjectByName("DiamondM4cube"), 'touchstart' , event =>{ infoanim("M4"); })
+        domEvents.addEventListener(scene.getObjectByName("DiamondM5cube"), 'touchstart' , event =>{ infoanim("M5"); })       
     }
     var camera, scene, renderer, controls;
     
@@ -353,6 +354,8 @@
     NameArray[11] = 'DiamondM1';
     NameArray[12] = 'DiamondM2';
     NameArray[13] = 'DiamondM3';
+    NameArray[14] = 'DiamondM4';
+    NameArray[15] = 'DiamondM5';
 	    
         
     //對的
@@ -372,6 +375,8 @@
     AddNewModel( NameArray[11] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,-130,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-150);  //綠
     AddNewModel( NameArray[12] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-150,130);   //紫
     AddNewModel( NameArray[13] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*260)-150,-130,Math.floor(Math.random()*260)-150);   //黃
+    AddNewModel( NameArray[14] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-150,-130);   //紫
+    AddNewModel( NameArray[15] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*260)-150,-130,Math.floor(Math.random()*260)150);   //黃
 
 	    
     AddPlanet(Pl0texture,-150,Math.floor(Math.random()*160)-150,Math.floor(Math.random()*260)-150);
@@ -872,6 +877,48 @@
             scene.add( DiamondM3info );
             this.M3.from(DiamondM3info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
             this.M3.to(DiamondM3info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
+        }
+	if(DName == "M4"){
+            this.M4 = new TimelineMax();
+            DiamondM4cube = scene.getObjectByName("DiamondM4cube"); 
+            this.M4.to(DiamondM4cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+            //定義寶石名稱
+            DiamondM4 = scene.getObjectByName("DiamondM4"); 
+            this.M4.to(DiamondM4.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            var geometry = new THREE.PlaneGeometry( 75,75 );
+            if( Language == "Chinese"){
+                var material = new THREE.MeshBasicMaterial( { map: Wrongtexture ,transparent: true, opacity: 0.95 } );
+            }else if(Language == "English"){
+                var material = new THREE.MeshBasicMaterial( { map: Wrong2texture ,transparent: true, opacity: 0.95 } );
+            }
+		material.minFilter = THREE.LinearMipMapLinearFilter ;
+            DiamondM4info = new THREE.Mesh( geometry, material );
+            DiamondM4info.position.copy(DiamondM4.position);         
+            DiamondM4info.lookAt( camera.position );
+            scene.add( DiamondM4info );
+            this.M4.from(DiamondM4info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
+            this.M4.to(DiamondM4info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
+        }
+	if(DName == "M5"){
+            this.M5 = new TimelineMax();
+            DiamondM5cube = scene.getObjectByName("DiamondM5cube"); 
+            this.M5.to(DiamondM5cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+            //定義寶石名稱
+            DiamondM5 = scene.getObjectByName("DiamondM5"); 
+            this.M5.to(DiamondM5.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            var geometry = new THREE.PlaneGeometry( 75,75 );
+            if( Language == "Chinese"){
+                var material = new THREE.MeshBasicMaterial( { map: Wrongtexture ,transparent: true, opacity: 0.95 } );
+            }else if(Language == "English"){
+                var material = new THREE.MeshBasicMaterial( { map: Wrong2texture ,transparent: true, opacity: 0.95 } );
+            }
+		material.minFilter = THREE.LinearMipMapLinearFilter ;
+            DiamondM5info = new THREE.Mesh( geometry, material );
+            DiamondM5info.position.copy(DiamondM5.position);         
+            DiamondM5info.lookAt( camera.position );
+            scene.add( DiamondM5info );
+            this.M5.from(DiamondM5info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
+            this.M5.to(DiamondM5info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
     }
     
