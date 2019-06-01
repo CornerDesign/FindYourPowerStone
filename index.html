@@ -61,7 +61,7 @@
     }
     #CountingCollect {
 	position: absolute;
-        top: 90%; width: 100%;
+        top: 50%; width: 100%;
         color: white;
         padding: 5px;
         font-family:Monospace;
@@ -145,7 +145,6 @@
 	<div id="CountingCollect">
 	<h3 id = "Collecttext"></h3>
 	</div>
-	    
         <div id="Tutorial">
             <img id = "tutorialimg " src="textures/phoneturn.png" alt="tutorial" width="100" > <br/>
             <h3 id = "tutorialtext">旋轉手機尋找能力寶石</h3>
@@ -878,10 +877,6 @@
 	}if( Language == "English" ){
 	    document.getElementById("Collecttext").value = leftNumber +" diamonds left to collect";
 	}
-	    
-	    
-	    
-	    
         //document.getElementById("Counting").innerHTML = CountNumber;
         if(CountNumber >= 5){
             controls.enable = false;
