@@ -173,6 +173,7 @@
     Tutorial.style.display = "none";
     EndingGame.style.display = "none";
     Main.style.display = "none";
+    CountingCollect.style.display = "none";
     TweenMax.from("#Background", 0.5 , { y:-5,opacity:0});
     TweenMax.from("#Rolling", 0.5 , { y:-5,opacity:0 ,delay:1});	
     LoadImageFirst();
@@ -194,13 +195,17 @@
             Language = "Chinese";
             document.getElementById("tutorialtext").innerHTML = "旋轉手機尋找能力寶石" ;
 	    document.getElementById("EndingButton").value = "來去抽獎";
+	    CountingCollect.style.display = "block";
 	    document.getElementById("Collecttext").innerHTML = "剩5個寶石要搜集";
+	    TweenMax.from("#CountingCollect", 0.5 , { y:-5,opacity:0 ,delay:1} );
             console.log("chinese");
         }if(language == 2){
             Language = "English";
             document.getElementById("tutorialtext").innerHTML = "Turn your Phone to find power stone" ;
 	    document.getElementById("EndingButton").value = "Get the prize";
+	    CountingCollect.style.display = "block";
 	    document.getElementById("Collecttext").innerHTML = "5 diamonds left to collect";
+	    TweenMax.from("#CountingCollect", 0.5 , { y:-5,opacity:0 ,delay:1} );
             console.log("English");
         }
         StartGamefunction();
