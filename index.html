@@ -877,14 +877,21 @@
     function EndGameCountDown(){
         CountNumber++;
 	var leftNumber = 5 - CountNumber;
-	if( Language == "Chinese" ){
-	    document.getElementById("Collecttext").innerHTML = "剩" + leftNumber +"個寶石要搜集";
-	}if( Language == "English" ){
-	    document.getElementById("Collecttext").innerHTML = leftNumber +"diamonds left to collect";
+	if(CountNumber < 5){
+	    if( Language == "Chinese" ){
+		document.getElementById("Collecttext").innerHTML = "剩" + leftNumber +"個寶石要搜集";
+	    }if( Language == "English" ){
+	    	document.getElementById("Collecttext").innerHTML = leftNumber +"diamonds left to collect";
+	    }
 	}
         //document.getElementById("Counting").innerHTML = CountNumber;
         if(CountNumber >= 5){
             controls.enable = false;
+	if( Language == "Chinese" ){
+	    document.getElementById("Collecttext").innerHTML = "恭喜你收集到所有能力寶石";
+	}if( Language == "English" ){
+	    document.getElementById("Collecttext").innerHTML = "Congratulation You get all of the power stone";
+	}
             var EndGameAnim = new TimelineLite();
             EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
             document.getElementById("Background").style.display = "block";
