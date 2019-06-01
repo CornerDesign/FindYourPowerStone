@@ -227,6 +227,8 @@
         domEvents.addEventListener(scene.getObjectByName("DiamondP1cube"), 'touchstart' , event =>{ infoanim("P1"); })
         domEvents.addEventListener(scene.getObjectByName("DiamondY1cube"), 'touchstart' , event =>{ infoanim("Y1"); })
         domEvents.addEventListener(scene.getObjectByName("DiamondO1cube"), 'touchstart' , event =>{ infoanim("O1"); })
+	domEvents.addEventListener(scene.getObjectByName("DiamondO2cube"), 'touchstart' , event =>{ infoanim("O2"); })
+	    
         domEvents.addEventListener(scene.getObjectByName("DiamondR1Wcube"), 'touchstart' , event =>{ infoanim("R1W"); })
         domEvents.addEventListener(scene.getObjectByName("DiamondG1Wcube"), 'touchstart' , event =>{ infoanim("G1W"); })
         domEvents.addEventListener(scene.getObjectByName("DiamondB1Wcube"), 'touchstart' , event =>{ infoanim("B1W"); })
@@ -343,6 +345,7 @@
     NameArray[3] = 'DiamondP1';
     NameArray[4] = 'DiamondY1';
     NameArray[5] = 'DiamondO1';
+    NameArray[16] = 'DiamondO2';
     //錯的
     NameArray[6] = 'DiamondR1W';
     NameArray[7] = 'DiamondG1W';
@@ -356,7 +359,6 @@
     NameArray[13] = 'DiamondM3';
     NameArray[14] = 'DiamondM4';
     NameArray[15] = 'DiamondM5';
-	    
         
     //對的
     AddNewModel( NameArray[0] , ColorArray[0] ,-90,60,-20);    //紅
@@ -365,6 +367,7 @@
     AddNewModel( NameArray[3] , ColorArray[3] ,90,30,40);      //紫
     AddNewModel( NameArray[4] , ColorArray[4] ,40,-30,-90);    //黃
     AddNewModel( NameArray[5] , ColorArray[5] ,-30,10,-90);    //橘
+    AddNewModel( NameArray[16] , ColorArray[5] ,-70,-50,90);    //橘
     //錯的    
     AddNewModel( NameArray[6] , ColorArray[6] ,-40,15,110);    //紅
     AddNewModel( NameArray[7] , ColorArray[7] ,110,-60,-30);   //綠
@@ -373,10 +376,10 @@
     AddNewModel( NameArray[10] , ColorArray[10] ,0,-25,110);   //黃
     //random
     AddNewModel( NameArray[11] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,-130,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-150);  //綠
-    AddNewModel( NameArray[12] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-150,130);   //紫
+    AddNewModel( NameArray[12] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-150,-130);   //紫
     AddNewModel( NameArray[13] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*260)-150,-130,Math.floor(Math.random()*260)-150);   //黃
-    AddNewModel( NameArray[14] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-150,-130);   //紫
-    AddNewModel( NameArray[15] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*260)-150,-130,Math.floor(Math.random()*260)150);   //黃
+    AddNewModel( NameArray[14] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-150,130);   //紫
+    AddNewModel( NameArray[15] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*260)-150,130,Math.floor(Math.random()*260)-150);   //黃
 
 	    
     AddPlanet(Pl0texture,-150,Math.floor(Math.random()*160)-150,Math.floor(Math.random()*260)-150);
@@ -709,6 +712,36 @@
             this.O1.from(DiamondO1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
             this.O1.to(DiamondO1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6);
             this.O1.to(DiamondO1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6.15);
+        }
+	if(DName == "O2"){
+            this.O2 = new TimelineMax();
+            DiamondO2cube = scene.getObjectByName("DiamondO2cube"); 
+            this.O2.to(DiamondO2cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+            //定義寶石名稱
+            DiamondO2 = scene.getObjectByName("DiamondO2"); 
+            this.O2.to(DiamondO2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            var geometry = new THREE.PlaneGeometry( 17.16 , 27.48 );//19.07 , 30.53
+            var material = new THREE.MeshBasicMaterial( { map: O1texture ,transparent: true, opacity: 0.95 } );
+            DiamondO2people = new THREE.Mesh( geometry, material );
+            DiamondO2people.position.copy(DiamondO2.position);       
+            DiamondO2people.lookAt( camera.position );
+		 DiamondO1people.renderOrder = 1;
+            scene.add( DiamondO2people );
+            var geometry = new THREE.PlaneGeometry( 75,75 );
+            if( Language == "Chinese"){
+                var material = new THREE.MeshBasicMaterial( { map: O1infotexture ,transparent: true, opacity: 0.95 } );
+            }else if(Language == "English"){
+                var material = new THREE.MeshBasicMaterial( { map: O1info2texture ,transparent: true, opacity: 0.95 } );
+            }
+            DiamondO2info = new THREE.Mesh( geometry, material );
+            DiamondO2info.position.copy (DiamondO2.position);
+            DiamondO2info.lookAt( camera.position );
+		 DiamondO2info.renderOrder = 2;
+            scene.add( DiamondO2info );
+            this.O2.from(DiamondO2people.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.25");
+            this.O2.from(DiamondO2info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
+            this.O2.to(Diamondo2people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6);
+            this.O2.to(DiamondO2info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6.15);
         }
         if(DName == "R1W"){
             this.R1W = new TimelineMax();
