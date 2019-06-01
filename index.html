@@ -894,6 +894,7 @@
 	}
             var EndGameAnim = new TimelineLite();
             EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
+	    TweenMax.to("#Collecttext", 0.5 , { y:0,opacity:0});
             document.getElementById("Background").style.display = "block";
             TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
             document.getElementById("EndingGame").style.display = "block";
