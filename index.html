@@ -349,21 +349,19 @@
     AddNewModel( NameArray[9] , ColorArray[9] ,-110,-20,40);   //紫
     AddNewModel( NameArray[10] , ColorArray[10] ,0,-25,110);   //黃
     //random
-    //var randomNum = Math.random() * 100 + 30 ;
-	
-    AddNewModel( NameArray[11] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,-120,Math.floor(Math.random()*240)-100,Math.floor(Math.random()*200)-100);  //綠
-    AddNewModel( NameArray[12] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*200)-100,Math.floor(Math.random()*200)-100,120);   //紫
-    AddNewModel( NameArray[13] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*200)-100,-120,Math.floor(Math.random()*200)-100);   //黃
+    AddNewModel( NameArray[11] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,-130,Math.floor(Math.random()*240)-100,Math.floor(Math.random()*200)-100);  //綠
+    AddNewModel( NameArray[12] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*200)-100,Math.floor(Math.random()*200)-100,130);   //紫
+    AddNewModel( NameArray[13] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*200)-100,-130,Math.floor(Math.random()*200)-100);   //黃
         
-    AddPlanet(Pl0texture,-130,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130);
-    AddPlanet(Pl1texture,130,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130);
-    AddPlanet(Pl2texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,-130);
-    AddPlanet(Pl3texture,140,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130);
-    AddPlanet(Pl4texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,130);
-    AddPlanet(Pl5texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,140);
-    AddPlanet(Pl6texture,-140,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-150);
-    AddPlanet(Pl7texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,130);
-    AddPlanet(Pl8texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,-140);
+    AddPlanet(Pl0texture,-150,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-150);
+    AddPlanet(Pl1texture,150,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-150);
+    AddPlanet(Pl2texture,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-130,-150);
+    AddPlanet(Pl3texture,160,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-150);
+    AddPlanet(Pl4texture,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-130,150);
+    AddPlanet(Pl5texture,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-130,160);
+    AddPlanet(Pl6texture,-160,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-150);
+    AddPlanet(Pl7texture,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-150,150);
+    AddPlanet(Pl8texture,Math.floor(Math.random()*260)-150,Math.floor(Math.random()*260)-150,-160);
 	  
     //Add a light
 
@@ -490,7 +488,7 @@
 
     //生成planet
     function AddPlanet( TextureName ,x,y,z){
- 	var geometry = new THREE.PlaneGeometry(20,20);
+ 	var geometry = new THREE.PlaneGeometry(25,25);
    	var material = new THREE.MeshBasicMaterial( { map: TextureName } );
     	planemesh = new THREE.Mesh( geometry, material );
     	planemesh.position.set( x , y , z);
