@@ -196,7 +196,7 @@
             document.getElementById("tutorialtext").innerHTML = "旋轉手機尋找能力寶石" ;
 	    document.getElementById("EndingButton").value = "來去抽獎";
 	    CountingCollect.style.display = "block";
-	    document.getElementById("Collecttext").innerHTML = "剩5個寶石要搜集";
+	    document.getElementById("Collecttext").innerHTML = "還有5個寶石待收集";
 	    TweenMax.from("#CountingCollect", 0.5 , { y:-5,opacity:0 ,delay:1.25} );
             console.log("chinese");
         }if(language == 2){
@@ -204,7 +204,7 @@
             document.getElementById("tutorialtext").innerHTML = "Turn your Phone to find power stone" ;
 	    document.getElementById("EndingButton").value = "Get the prize";
 	    CountingCollect.style.display = "block";
-	    document.getElementById("Collecttext").innerHTML = "5 diamonds left to collect";
+	    document.getElementById("Collecttext").innerHTML = "5 stones left to be collected";
 	    TweenMax.from("#CountingCollect", 0.5 , { y:-5,opacity:0 ,delay:1.25} );
             console.log("English");
         }
@@ -960,18 +960,18 @@
 	var leftNumber = 5 - CountNumber;
 	if(CountNumber < 5){
 	    if( Language == "Chinese" ){
-		document.getElementById("Collecttext").innerHTML = "剩" + leftNumber +"個寶石要搜集";
+		document.getElementById("Collecttext").innerHTML = "還有" + leftNumber +"個寶石待收集";
 	    }if( Language == "English" ){
-	    	document.getElementById("Collecttext").innerHTML = leftNumber +" diamonds left to collect";
+	    	document.getElementById("Collecttext").innerHTML = leftNumber +" stones left to be collected";
 	    }
 	}
         //document.getElementById("Counting").innerHTML = CountNumber;
         if(CountNumber >= 5){
             controls.enable = false;
 	if( Language == "Chinese" ){
-	    document.getElementById("Collecttext").innerHTML = "收集到所有能力寶石";
+	    document.getElementById("Collecttext").innerHTML = "恭喜完成寶石收集，請稍待片刻";
 	}if( Language == "English" ){
-	    document.getElementById("Collecttext").innerHTML = "You get all of the power stone";
+	    document.getElementById("Collecttext").innerHTML = "You’ve gotten all the stones, please wait";
 	}
             var EndGameAnim = new TimelineLite();
             EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
